@@ -4,7 +4,8 @@ import time
 def countdown(t):
     while t:
         hours, mins = divmod(t, 3600)
-        mins, secs = divmod(t, 60)
+        onlyMinutesAndSeconds = t - hours * 3600
+        mins, secs = divmod(onlyMinutesAndSeconds, 60)
         timer = f"{hours:02d}:{mins:02d}:{secs:02d}"
         print(timer, end="\n")
         time.sleep(1)
@@ -13,6 +14,7 @@ def countdown(t):
 
 
 timeStr = input("Insert the time to count down (h:m:s): ")
+
 timeList = timeStr.split(":")
 for i in range(len(timeList)):
     timeList[i] = int(timeList[i])

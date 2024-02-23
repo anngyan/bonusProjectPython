@@ -24,7 +24,7 @@ while True:
         timeInSeconds = timeList[2] + timeList[1] * 60 + timeList[0] * 3600
         countdown(int(timeInSeconds))
         break
-    except ValueError:
+    except (ValueError, IndexError):
         print("Not a valid input. Make sure your input is in h:m:s format and m and s are integers between 0 and 59. ")
     except KeyboardInterrupt:
         print("Program stopped.")

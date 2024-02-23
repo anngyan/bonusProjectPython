@@ -13,12 +13,19 @@ def countdown(t):
     print("Time's up!")
 
 
-timeStr = input("Insert the time to count down (h:m:s): ")
-
-timeList = timeStr.split(":")
-for i in range(len(timeList)):
-    timeList[i] = int(timeList[i])
-
-timeInSeconds = timeList[2] + timeList[1] * 60 + timeList[0] * 3600
-
-countdown(int(timeInSeconds))
+while True:
+    try:
+        timeStr = input("Insert the time to count down (h:m:s): ")
+        timeList = timeStr.split(":")
+        for i in range(len(timeList)):
+            timeList[i] = int(timeList[i])
+        if (timeList[1] >= 60 or timeList[1] < 0) or (timeList[2] >= 60 or timeList[2] < 0):
+            raise ValueError
+        timeInSeconds = timeList[2] + timeList[1] * 60 + timeList[0] * 3600
+        countdown(int(timeInSeconds))
+        break
+    except ValueError:
+        print("Not a valid input. Make sure your input is in h:m:s format and m and s are integers between 0 and 59. ")
+    except KeyboardInterrupt:
+        print("Program stopped.")
+        break
